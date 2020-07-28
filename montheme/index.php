@@ -159,8 +159,10 @@
         <hr class="mt-0 mb-3">
         <h6 class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit duis sed dapibus leonec.</h6>
 
+<?php masterslider(2); ?>
+
         <!-- buttons -->
-        <div class="row text-nowrap">
+        <!-- <div class="row text-nowrap">
           <div id="btnContainer" class="col-md-3">
             <button id="all" class="ml-2 mr-0 btn-gallery btn-custom btn btn-lg active">All</button>
           </div>
@@ -281,7 +283,7 @@
           </div>
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
           <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
