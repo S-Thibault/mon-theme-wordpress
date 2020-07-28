@@ -1,15 +1,5 @@
 <?php get_header(); ?>
-<main class="wrap">
-  <section class="content-area content-thin">
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-      <article class="article-loop">
-        <header>
-        </header>
-      </article>
-<?php endwhile; else : ?>
-      <article>
-      </article>
-<?php endif; ?>
+
 
 
 
@@ -64,37 +54,40 @@
       </div>
     </div>
   </header>
+
   <section id="aboutSection" class="min-vw-100 min-vh-100 border border-warning" data-spy="scroll" data-target="#navbarSection" data-offset="0">
     <div class="container">
-      <div class="row mt-5 pt-5 mb-5 pb-4 text-black-50 text-left">
+      <div class="row mt-5 pt-5 mb-5 pb-4 text-black-50 ">
         <div class="col-lg-6">
           <h3 class="font-weight-bold text-dark">Welcome to <span class="font-weight-bolder">Landscaper</span></h3>
-          <hr class="ml-0 mb-4">
+
 <?php if (have_posts()): ?>
-  <ul>
+
     <?php while(have_posts()): the_post(); ?>
-        <li><?php the_title() ?></li>
+
+        <div class="card">
+            <?php the_post_thumbnail('post-thumbnail', ['class' => 'card-img-top', 'alt' => '', 'style' => 'height: auto;']) ?>
+              <div class="card-body">
+                <h5 class="card-title"><?php the_title() ?></h5>
+
+                    <p class="card-text">
+                      <?php the_excerpt()?>
+                    </p>
+                  <a href="<?php the_permalink() ?>" class="card-link">voir plus</a>
+              </div>
+        </div>
+      </div>
     <?php endwhile?>
 
+  </div>
 <?php else: ?>
    <h1>Pas d'article</h1>
 <?php endif; ?>
 
-<a class="btn-custom btn btn-lg mb-5" href="#serviceSection">View All Services</a>
-</div>
-<div class="col-lg-3">
-<img src="<?php bloginfo('template_directory');?>/img/about-1.jpg" class="w-100 img-fluid rounded">
-<h6 class="mt-3 mb-3 font-weight-bold text-dark">Garden Care</h6>
-<p class="image-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis.</p>
-</div>
-<div class="col-lg-3">
-<img src="<?php bloginfo('template_directory');?>/img/about-2.jpg" class="w-100 img-fluid rounded">
-<h6 class="mt-3 mb-3 font-weight-bold text-dark">Lawn Care</h6>
-<p class="image-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante.</p>
+
 </div>
 </div>
-</div>
-</section> -->
+</section>
 
   <!-- ABOUT SECTION -->
   <!-- <section id="aboutSection" class="min-vw-100 min-vh-100 border border-warning" data-spy="scroll" data-target="#navbarSection" data-offset="0">
