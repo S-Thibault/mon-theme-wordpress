@@ -1,4 +1,10 @@
 <?php
+
+function montheme_supports () {
+  add_theme_support('title-tag');
+  add_theme_support('post-thumbnails');
+}
+
 // This function enqueues the Normalize.css for use. The first parameter is a name for the stylesheet, the second is the URL. Here we
 // use an online version of the css file.
 function add_normalize_CSS() {
@@ -6,14 +12,15 @@ function add_normalize_CSS() {
 }
 
 // Chargement des styles et des scripts Bootstrap sur WordPress
- function wpbootstrap_styles_scripts(){
+ function montheme_register_assets(){
      wp_enqueue_style('style', get_stylesheet_uri());
      wp_enqueue_style('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
      wp_enqueue_script('jquery');
      wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', array('jquery'), 1, true);
      wp_enqueue_script('boostrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array('jquery', 'popper'), 1, true);
+
  }
- add_action('wp_enqueue_scripts', 'wpbootstrap_styles_scripts');
+ add_action('wp_enqueue_scripts', 'montheme_register_assets');
 
 // Register a new sidebar simply named 'sidebar'
 function add_widget_Support() {
@@ -41,3 +48,11 @@ add_action( 'wp_enqueue_scripts', 'enqueue_mon_script' );
 function enqueue_mon_script() {
     wp_enqueue_script( 'script-perso', get_stylesheet_directory_uri() . 'custom-js/custom-jquery.js', array( 'jquery' ) );
 }
+
+function montheme_title_seperator (){
+  return '|';
+}
+
+add_action('after_setup_theme','montheme_supports');
+add_action('wp_enqueue_scripts','montheme_register_assets');
+add_filter('document_title_seperator','mon_title_seperator');
